@@ -14,13 +14,13 @@ Build a simple Angular (v7 - v12 or latest) application that includes:
    - current highest bid value in Euro
    - remaining time in format „00h:00m:00s“
    - information whether the logged in buyer is the highest bidder on an auction
-   
+
 Please fork the repo and create the Angular project in the directory of this README.
 
-Note that the solution must be coded in Angular, as this is the framework we are using internally. 
+Note that the solution must be coded in Angular, as this is the framework we are using internally.
 No previous professional experience with Angular will be consider when checking the results
 
-There is no time constraint for this challenge, you can take as much time as necessary in order to provide a solution that represents you. 
+There is no time constraint for this challenge, you can take as much time as necessary in order to provide a solution that represents you.
 But in order to dedicate internal resources to review your solution, we kindly ask you to send us an estimation of the time to <coding-challenge@caronsale.de>. This way we will be able to reduce the selection process duration.
 
 ## Your Resources:

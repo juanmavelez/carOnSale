@@ -1,0 +1,26 @@
+.login-content{
+    position: relative;
+    margin: 3% auto 0;
+    width: min(90%, 500px)
+}
+.login-logo{
+    display: block;
+    width: 60%;
+    margin: 0 auto;
+    padding: 6%;
+    text-align: center;
+    font-size: 32px;
+}
+
+.login-input{
+  width: 100%;
+}
+.login-button{
+  width:100%;
+  margin: 10px 0;
+}
+.login-forgot-password{
+  text-align: center;
+  font-size: 12px;
+  color: #a9a9a9;
+}

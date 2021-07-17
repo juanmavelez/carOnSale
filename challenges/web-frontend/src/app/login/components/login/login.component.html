@@ -1,0 +1,27 @@
+<div class="login-content">
+  <form [formGroup]="form" (ngSubmit)="login($event)">
+    <mat-card>
+      <img class="login-logo" src="https://app.caronsale.de/assets/logo/cos/logo-dark.svg" alt="">
+      <mat-card-content>
+        <mat-form-field class="login-input" appearance="outline">
+          <mat-label>E-mail</mat-label>
+          <input matInput placeholder="Placeholder" formControlName="email" name="email" type="email">
+        </mat-form-field>
+
+        <mat-form-field class="login-input" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Placeholder" formControlName="password" name="password" type="password">
+          <i matSuffix class="far fa-eye"></i>
+        </mat-form-field>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button class="login-button" mat-stroked-button type="submit">Login</button>
+        <a class="login-button" mat-flat-button color="primary">Do you want to sell?</a>
+        <a class="login-button" mat-flat-button color="primary">Register as Buyer</a>
+        <p class="login-forgot-password">Forgot password</p>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+
+</div>
