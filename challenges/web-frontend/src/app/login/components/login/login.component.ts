@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
 import { AuthService } from '@core/services/auth/auth.service';
 
 @Component({
@@ -18,11 +17,12 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router
   ) {
-    this.buildForm();
     this.hasError = false;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.buildForm();
+  }
 
   private buildForm(): void {
     this.form = this.formBuilder.group({
@@ -31,9 +31,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login(event: Event): void {
+  signIn(): void {
     const value = this.form.value;
-
+    console.log(value);
     if (value.email && value.password) {
       this.authService.login(value.email, value.password).subscribe((res) => {
         if (res) {

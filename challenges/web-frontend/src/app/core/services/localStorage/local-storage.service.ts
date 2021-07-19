@@ -7,16 +7,18 @@ export class LocalStorageService {
   constructor() {}
 
   setSession(token: string, scopes: string, userId: string): boolean {
-    localStorage.setItem('userId', userId);
-    localStorage.setIem('token', token);
-    localStorage.setItem('scopes', scopes);
-    return true;
+    if (token && scopes && userId) {
+      localStorage.setItem('userId', userId);
+      localStorage.setIem('token', token);
+      localStorage.setItem('scopes', scopes);
+      return true;
+    } else {
+      return false;
+    }
   }
 
   logout(): boolean {
-    localStorage.removeItem('userId');
-    localStorage.removeItem('token');
-    localStorage.removeItem('scopes');
+    localStorage.clear();
     return true;
   }
 

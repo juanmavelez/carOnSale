@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { shareReplay, retry, map } from 'rxjs/operators';
 
 import { LocalStorageService } from '@core/services/localStorage/local-storage.service';
-import { IResponseAuth } from 'src/models';
+import { IResponseAuth } from '@core/models';
 import { environment } from '@environments/environment';
 
 @Injectable({
@@ -28,12 +28,14 @@ export class AuthService {
       .pipe(
         map((res) => {
           if (res.token && res.privileges && res.userId) {
-            this.localStorageService.setSession(
+            const seted = this.localStorageService.setSession(
               res.token,
               res.privileges,
               res.userId
             );
-            return true;
+            if (seted) {
+              return true;
+            }
           }
           return false;
         }),
