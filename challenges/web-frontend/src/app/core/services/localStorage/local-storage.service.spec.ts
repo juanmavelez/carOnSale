@@ -30,13 +30,18 @@ describe('LocalStorageService', () => {
     localStorageService = TestBed.inject(LocalStorageService);
   });
 
-  it('hould be created', () => {
+  it('Should be created', () => {
     expect(localStorageService).toBeTruthy();
   });
 
   describe('Testing setSession()', () => {
     it('Should return a true', () => {
       const value = localStorageService.setSession('token', 'scopes', 'userId');
+      expect(value).toBeTruthy();
+      expect(localStorage.setItem).toHaveBeenCalledTimes(3);
+      expect(localStorage.setItem).toHaveBeenCalledWith('token', 'token');
+      expect(localStorage.setItem).toHaveBeenCalledWith('scopes', 'scopes');
+      expect(localStorage.setItem).toHaveBeenCalledWith('userId', 'userId');
     });
     it('Should return false due missing token', () => {
       const value = localStorageService.setSession('', 'scopes', 'userId');
@@ -53,11 +58,28 @@ describe('LocalStorageService', () => {
   });
 
   describe('Testing Logout', () => {
-    it('Should return True', () => {
+    it('Should clean the localStorage', () => {
+      localStorage.setItem('token', 'token');
+      localStorage.setItem('userId', 'userId');
       localStorageService.logout();
+      expect(localStorage.getItem('userId')).toBeNull();
+      expect(localStorage.getItem('token')).toBeNull();
     });
   });
 
+  describe('Testing getUserId()', () => {
+    it('Should return a string', () => {
+      window.localStorage.setItem('userId', 'user');
+      const value = localStorageService.getUserId();
+      expect(localStorage.getItem).toHaveBeenCalled();
+      expect(value).toEqual('user');
+    });
+    it('Should return null', () => {
+      window.localStorage.clear();
+      const value = localStorageService.getToken();
+      expect(value).toBeNull();
+    });
+  });
   describe('Testing getToken()', () => {
     it('Should return a string', () => {
       window.localStorage.setItem('token', '1234');

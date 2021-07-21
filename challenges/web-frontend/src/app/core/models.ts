@@ -8,6 +8,10 @@ export interface IResponseAuth {
   privileges: string;
 }
 
+export interface IResponseAuctions {
+  items: IAuction[];
+}
+
 export interface IAuction {
   id: number;
   endingTime: string;
@@ -20,6 +24,9 @@ export interface IAuction {
   startingBidValue: number;
   remainingTimeInSeconds: number;
   associatedVehicle: IVehicle;
+  label: string;
+  hotBid: boolean;
+  amIHighestBidder: boolean;
 }
 
 export interface IVehicle {

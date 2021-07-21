@@ -9,7 +9,7 @@ export class LocalStorageService {
   setSession(token: string, scopes: string, userId: string): boolean {
     if (token && scopes && userId) {
       localStorage.setItem('userId', userId);
-      localStorage.setIem('token', token);
+      localStorage.setItem('token', token);
       localStorage.setItem('scopes', scopes);
       return true;
     } else {
@@ -17,9 +17,8 @@ export class LocalStorageService {
     }
   }
 
-  logout(): boolean {
+  logout(): void {
     localStorage.clear();
-    return true;
   }
 
   getUserId(): string {

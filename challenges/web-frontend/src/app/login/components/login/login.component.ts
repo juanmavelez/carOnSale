@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     if (value.email && value.password) {
       this.authService.login(value.email, value.password).subscribe((res) => {
         if (res) {
-          this.router.navigateByUrl('/overview');
+          this.router.navigateByUrl('overview');
         } else {
           this.hasError = true;
         }

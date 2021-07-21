@@ -1,1 +1,6 @@
-<p>overview works!</p>
+<ul class="auction__list" *ngIf="($auction | async) as auctionArray">
+  <li *ngFor="let auction of auctionArray">
+    <app-auction [auction]="auction"></app-auction>
+  </li>
+</ul>
+<p>I am in overview</p>
