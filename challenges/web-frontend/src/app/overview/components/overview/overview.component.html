@@ -1,6 +1,20 @@
-<ul class="auction__list" *ngIf="($auction | async) as auctionArray">
-  <li *ngFor="let auction of auctionArray">
-    <app-auction [auction]="auction"></app-auction>
-  </li>
-</ul>
-<p>I am in overview</p>
+<div *ngIf="($auction | async) as auctionArray">
+  <h2 class="title">I am winning this auctions</h2>
+  <ul class="auction__list">
+    <li *ngFor="let auction of highestBidder(auctionArray)">
+      <app-auction [auction]="auction"></app-auction>
+    </li>
+  </ul>
+  <h2 class="title">Hot Bids</h2>
+  <ul class="auction__list">
+    <li *ngFor="let auction of hotDeals(auctionArray)">
+      <app-auction [auction]="auction"></app-auction>
+    </li>
+  </ul>
+  <h2 class="title">All deals</h2>
+  <ul class="auction__list">
+    <li *ngFor="let auction of normalDeals(auctionArray)">
+      <app-auction [auction]="auction"></app-auction>
+    </li>
+  </ul>
+</div>

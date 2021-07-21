@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl('overview');
         } else {
           this.hasError = true;
+          window.alert('The user or password didnt work, try again!');
         }
       });
     }

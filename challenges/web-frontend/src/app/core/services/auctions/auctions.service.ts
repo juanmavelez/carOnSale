@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map, switchMap, retry, share, timer } from 'rxjs/operators';
+import { Observable, timer } from 'rxjs';
+import { map, switchMap, retry, share } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
 import { IResponseAuctions, IAuction } from '@core/models';
@@ -30,7 +30,6 @@ export class AuctionsService {
         authToken: this.token,
       }),
     };
-
     const httpCall: Observable<IAuction[]> = this.http
       .get<IResponseAuctions>(`${this.url}/v2/auction/buyer/`, httpOptions)
       .pipe(
@@ -40,6 +39,11 @@ export class AuctionsService {
         retry(3),
         share()
       );
-    return timer(1, 3000).pipe(switchMap(() => httpCall));
+    return timer(1, 20 * 1000).pipe(
+      switchMap(() => {
+        console.log('called');
+        return httpCall;
+      })
+    );
   }
 }

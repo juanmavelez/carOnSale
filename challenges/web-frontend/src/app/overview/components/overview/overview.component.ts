@@ -14,4 +14,13 @@ export class OverviewComponent implements OnInit {
   ngOnInit(): void {
     this.$auction = this.auctionsService.getAuctionBuyer();
   }
+  highestBidder(array: IAuction[]): IAuction[] {
+    return array.filter((res) => res.amIHighestBidder);
+  }
+  hotDeals(array: IAuction[]): IAuction[] {
+    return array.filter((res) => res.hotBid && !res.amIHighestBidder);
+  }
+  normalDeals(array: IAuction[]): IAuction[] {
+    return array.filter((res) => !res.hotBid && !res.amIHighestBidder);
+  }
 }
