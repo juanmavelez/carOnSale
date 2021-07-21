@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth/auth.service';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -31,18 +30,27 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  get email() {
+    return this.form.get('email');
+  }
+  get password() {
+    return this.form.get('password');
+  }
+
   signIn(): void {
     const value = this.form.value;
     console.log(value);
     if (value.email && value.password) {
-      this.authService.login(value.email, value.password).subscribe((res) => {
-        if (res) {
-          this.router.navigateByUrl('overview');
-        } else {
+      this.authService.login(value.email, value.password).subscribe(
+        () => this.router.navigateByUrl('overview'),
+        () => {
           this.hasError = true;
-          window.alert('The user or password didnt work, try again!');
+          alert('User or password incorrect, plis try again!');
         }
-      });
+      );
+    } else {
+      this.hasError = true;
+      window.alert('The user or password didnt work, try again!');
     }
   }
 }

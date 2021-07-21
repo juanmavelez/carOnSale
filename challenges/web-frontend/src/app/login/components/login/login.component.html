@@ -6,12 +6,15 @@
         <mat-form-field class="login-input" appearance="outline">
           <mat-label>E-mail</mat-label>
           <input matInput placeholder="Placeholder" formControlName="email" name="email" type="email">
+          <mat-error *ngIf="email.errors?.required">This field is required</mat-error>
+          <mat-error *ngIf="email.errors?.email">Introduce a valid email</mat-error>
         </mat-form-field>
 
         <mat-form-field class="login-input" appearance="outline">
           <mat-label>Password</mat-label>
           <input matInput placeholder="Placeholder" formControlName="password" name="password" type="password">
           <i matSuffix class="far fa-eye"></i>
+          <mat-error *ngIf="email.errors?.required">This field is required</mat-error>
         </mat-form-field>
       </mat-card-content>
 
@@ -23,5 +26,4 @@
       </mat-card-actions>
     </mat-card>
   </form>
-
 </div>
